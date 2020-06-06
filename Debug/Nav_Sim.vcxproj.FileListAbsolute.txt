@@ -1,0 +1,2 @@
+C:\Users\ydm\Desktop\Nav_Sim\Debug\Nav_Sim.exe
+C:\Users\ydm\Desktop\Nav_Sim\Debug\Nav_Sim.pdb

@@ -16,7 +16,7 @@
 #include "EKF.h"
 
 int main() {
-	
+	//
 	//INS_Calculate ic;
 	//ic.INS_Init();
 	//ic.INS_Update();
@@ -24,6 +24,6 @@ int main() {
 	EKF ekf;
 	ekf.Init();
 	ekf.Update();
-	
+	//
 	return 0;
 }

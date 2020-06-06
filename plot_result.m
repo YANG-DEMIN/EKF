@@ -2,118 +2,124 @@ clear
 close all
 %%
 % %********************************ÔëÉù*************************************%
-% Noisedata = load('C:\Users\ydm\Desktop\Nav_Sim\result\NoiseCombinedData.txt');
-% Rawdata = load('C:\Users\ydm\Desktop\Nav_Sim\result\Rawdata.txt');
-% 
-% Noisedata(1,:) = [];
-% Rawdata(1,:) = [];
-% 
-% figure(1)
-% plot(Rawdata(: , 1), Rawdata(: , 2),'LineWidth',1.5);
-% hold on
-% plot(Rawdata(: , 1), Noisedata(: , 2),'LineWidth',1.5);
-% title('acc_x');
-% figure(2)
-% plot(Rawdata(: , 1), Rawdata(: , 3),'LineWidth',1.5);
-% hold on
-% plot(Rawdata(: , 1), Noisedata(: , 3),'LineWidth',1.5);
-% title('acc_y');
-% figure(3)
-% plot(Rawdata(: , 1), Rawdata(: , 4),'LineWidth',1.5);
-% hold on
-% plot(Rawdata(: , 1), Noisedata(: , 4),'LineWidth',1.5);
-% title('acc_z');
-% figure(4)
-% plot(Rawdata(: , 1), Rawdata(: , 5),'LineWidth',1.5);
-% hold on
-% plot(Rawdata(: , 1), Noisedata(: , 5),'LineWidth',1.5);
-% title('gyro_x');
-% figure(5)
-% plot(Rawdata(: , 1), Rawdata(: , 6),'LineWidth',1.5);
-% hold on
-% plot(Rawdata(: , 1), Noisedata(: , 6),'LineWidth',1.5);
-% title('gyro_y');
-% figure(6)
-% plot(Rawdata(: , 1), Rawdata(: , 7),'LineWidth',1.5);
-% hold on
-% plot(Rawdata(: , 1), Noisedata(: , 7),'LineWidth',1.5);
-% title('gyro_z');
+clear
+close all
+DEG = 180 / pi;
+Noisedata = load('C:\Users\ydm\Desktop\Nav_Sim\result\NoiseCombinedData.txt');
+Rawdata = load('C:\Users\ydm\Desktop\Nav_Sim\result\Rawdata.txt');
+
+Noisedata(1,:) = [];
+Rawdata(1,:) = [];
+
+figure(1)
+plot(Rawdata(: , 1), Rawdata(: , 2),'LineWidth',1.5);
+hold on
+plot(Rawdata(: , 1), Noisedata(: , 2),'LineWidth',1.5);
+title('acc_x');
+figure(2)
+plot(Rawdata(: , 1), Rawdata(: , 3),'LineWidth',1.5);
+hold on
+plot(Rawdata(: , 1), Noisedata(: , 3),'LineWidth',1.5);
+title('acc_y');
+figure(3)
+plot(Rawdata(: , 1), Rawdata(: , 4),'LineWidth',1.5);
+hold on
+plot(Rawdata(: , 1), Noisedata(: , 4),'LineWidth',1.5);
+title('acc_z');
+figure(4)
+plot(Rawdata(: , 1), Rawdata(: , 5) * DEG,'LineWidth',1.5);
+hold on
+plot(Rawdata(: , 1), Noisedata(: , 5) * DEG,'LineWidth',1.5);
+title('gyro_x');
+figure(5)
+plot(Rawdata(: , 1), Rawdata(: , 6) * DEG,'LineWidth',1.5);
+hold on
+plot(Rawdata(: , 1), Noisedata(: , 6) * DEG,'LineWidth',1.5);
+title('gyro_y');
+figure(6)
+plot(Rawdata(: , 1), Rawdata(: , 7) * DEG,'LineWidth',1.5);
+hold on
+plot(Rawdata(: , 1), Noisedata(: , 7) * DEG,'LineWidth',1.5);
+title('gyro_z');
 %%
 %************************±ê×¼¹ì¼£Óë´¿INS¹ì¼£******************************%
-% FlightState = load('C:\Users\ydm\Desktop\Nav_Sim\result\Flightdata.txt');
-% SimuState = load('C:\Users\ydm\Desktop\Nav_Sim\result\SimuState.txt');
-% 
-% SimuState(1,:) = [];
-% FlightState(1,:) = [];
-% 
-% figure(1)
-% plot(SimuState(: , 1),FlightState(: , 2),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 2),'LineWidth',1.5);
-% title('Î³¶ÈL');
-% 
-% figure(2)
-% plot(SimuState(: , 1),FlightState(: , 3),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 3),'LineWidth',1.5);
-% title('¾­¶È¦Ë');
-% 
-% figure(3)
-% plot(SimuState(: , 1),FlightState(: , 4),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 4),'LineWidth',1.5);
-% title('¸ß¶Èh');
-% 
-% figure(4)
-% plot(SimuState(: , 1),FlightState(: , 5),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 5),'LineWidth',1.5);
-% title('vx');
-% 
-% figure(5) 
-% plot(SimuState(: , 1),FlightState(: , 6),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 6),'LineWidth',1.5);
-% title('vy');
-% 
-% figure(6)
-% plot(SimuState(: , 1),FlightState(: , 7),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 7),'LineWidth',1.5);
-% title('vz');
-% 
-% figure(7)
-% plot(SimuState(: , 1),FlightState(: , 8),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 8),'LineWidth',1.5);
-% title('¹ö×ª¦Ã');
-% 
-% figure(8)
-% plot(SimuState(: , 1),FlightState(: , 9),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 9),'LineWidth',1.5);
-% title('Æ«º½¦×');
-% 
-% figure(9)
-% plot(SimuState(: , 1),FlightState(: , 10),'LineWidth',1.5);
-% hold on
-% plot(SimuState(: , 1),SimuState(: , 10),'LineWidth',1.5);
-% title('¸©Ñö¦Õ');
-%%
-%********************±ê×¼¹ì¼£¡¢INS¹ì¼£ÓëEKF¹ì¼£***************************%
 clear
 close all
 FlightState = load('C:\Users\ydm\Desktop\Nav_Sim\result\Flightdata.txt');
 SimuState = load('C:\Users\ydm\Desktop\Nav_Sim\result\SimuState.txt');
-EKF_INS_State = load('C:\Users\ydm\Desktop\Nav_Sim\result\EKF_INS_State.txt');
 
-%²»»­´¿INS
-SimuState = FlightState;
+DEG = 180 / pi;
+
+SimuState(1,:) = [];
+FlightState(1,:) = [];
+
+figure(1)
+plot(SimuState(: , 1),FlightState(: , 2),'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 2),'LineWidth',1.5);
+title('Î³¶ÈL');
+
+figure(2)
+plot(SimuState(: , 1),FlightState(: , 3),'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 3),'LineWidth',1.5);
+title('¾­¶È¦Ë');
+
+figure(3)
+plot(SimuState(: , 1),FlightState(: , 4),'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 4),'LineWidth',1.5);
+title('¸ß¶Èh');
+
+figure(4)
+plot(SimuState(: , 1),FlightState(: , 5),'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 5),'LineWidth',1.5);
+title('vx');
+
+figure(5) 
+plot(SimuState(: , 1),FlightState(: , 6),'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 6),'LineWidth',1.5);
+title('vy');
+
+figure(6)
+plot(SimuState(: , 1),FlightState(: , 7),'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 7),'LineWidth',1.5);
+title('vz');
+
+figure(7)
+plot(SimuState(: , 1),FlightState(: , 8) * DEG,'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 8) * DEG,'LineWidth',1.5);
+title('¹ö×ª¦Ã');
+
+figure(8)
+plot(SimuState(: , 1),FlightState(: , 9) * DEG,'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 9) * DEG,'LineWidth',1.5);
+title('Æ«º½¦×');
+
+figure(9)
+plot(SimuState(: , 1),FlightState(: , 10) * DEG,'LineWidth',1.5);
+hold on
+plot(SimuState(: , 1),SimuState(: , 10) * DEG,'LineWidth',1.5);
+title('¸©Ñö¦Õ');
+%%
+%********************±ê×¼¹ì¼£¡¢INS¹ì¼£ÓëEKF¹ì¼£***************************%
+clear
+close all
+DEG = 180 / pi;
+FlightState = load('C:\Users\ydm\Desktop\Nav_Sim\result\Flightdata.txt');
+SimuState = load('C:\Users\ydm\Desktop\Nav_Sim\result\SimuState.txt');
+EKF_INS_State = load('C:\Users\ydm\Desktop\Nav_Sim\result\EKF_INS_State.txt');
 
 FlightState(1,:) = [];
 SimuState(1,:) = [];
 EKF_INS_State(1,:) = [];
-
+%²»»­´¿INS
+%SimuState = FlightState;
 
 figure(1)
 plot(FlightState(: , 1),FlightState(: , 2),'LineWidth',1.5);
@@ -164,27 +170,27 @@ plot(FlightState(: , 1),EKF_INS_State(: , 7),'LineWidth',1.5);
 title('vz');
 
 figure(7)
-plot(FlightState(: , 1),FlightState(: , 8),'LineWidth',1.5);
+plot(FlightState(: , 1),FlightState(: , 8) * DEG,'LineWidth',1.5);
 hold on
-plot(FlightState(: , 1),SimuState(: , 8),'LineWidth',1.5);
+plot(FlightState(: , 1),SimuState(: , 8) * DEG,'LineWidth',1.5);
 hold on
-plot(FlightState(: , 1),EKF_INS_State(: , 8),'LineWidth',1.5);
+plot(FlightState(: , 1),EKF_INS_State(: , 8) * DEG,'LineWidth',1.5);
 title('¹ö×ª¦Ã');
 
 figure(8)
-plot(FlightState(: , 1),FlightState(: , 9),'LineWidth',1.5);
+plot(FlightState(: , 1),FlightState(: , 9) * DEG,'LineWidth',1.5);
 hold on
-plot(FlightState(: , 1),SimuState(: , 9),'LineWidth',1.5);
+plot(FlightState(: , 1),SimuState(: , 9) * DEG,'LineWidth',1.5);
 hold on
-plot(FlightState(: , 1),EKF_INS_State(: , 9),'LineWidth',1.5);
+plot(FlightState(: , 1),EKF_INS_State(: , 9) * DEG,'LineWidth',1.5);
 title('Æ«º½¦×');
 
 figure(9)
-plot(FlightState(: , 1),FlightState(: , 10),'LineWidth',1.5);
+plot(FlightState(: , 1),FlightState(: , 10) * DEG,'LineWidth',1.5);
 hold on
-plot(FlightState(: , 1),SimuState(: , 10),'LineWidth',1.5);
+plot(FlightState(: , 1),SimuState(: , 10) * DEG,'LineWidth',1.5);
 hold on
-plot(FlightState(: , 1),EKF_INS_State(: , 10),'LineWidth',1.5);
+plot(FlightState(: , 1),EKF_INS_State(: , 10) * DEG,'LineWidth',1.5);
 title('¸©Ñö¦Õ');
 %%
 %********************************·½²î************************************%
