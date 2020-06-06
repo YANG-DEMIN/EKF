@@ -1,2 +1,2 @@
 # EKF
-It is used to simulate  the standard trajectory of missiles, noise of Inertial Measured Unit,  and integrated navigation (EKF) calculation.
+It is used to simulate  the standard trajectory of missiles, noise of Inertial Measurement Unit,  and integrated navigation (EKF) calculation.
